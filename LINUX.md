@@ -1,6 +1,6 @@
 # Linux
 
-User management:
+### User management:
 ```bash
 # add new user
 sudo useradd [USER]
@@ -12,6 +12,7 @@ cat /etc/passwd
 sudo usermod -aG sudo [USER]
 sudo visudo /etc/sudoers # add user
 ```
+
 
 *sudoers*
 ```text
@@ -49,7 +50,8 @@ root	ALL=(ALL:ALL) ALL
 #includedir /etc/sudoers.d
 ```
 
-Group management:
+
+### Group management:
 ```bash
 # add group
 groupadd [GROUP]
@@ -71,21 +73,25 @@ sudo gpasswd -d [USER] [GROUP]
 
 ```
 
-File permissions:
-> 4 -> r
-> 2 -> w
-> 1 -> x
->
-> Add up for combined permissions
-> 7 -> rwx ...
->
-> -rwxrwxrwx
-> 1: d -> directory, - -> file
-> 2-4: rwx -> owner permissions
-> 5-7: rwx -> group permissions
-> 8-10: rwx -> all user permissions
 
-Create shared folder for group:
+### File permissions:
+```text
+4 -> r
+2 -> w
+1 -> x
+
+Add up for combined permissions
+7 -> rwx ...
+
+-rwxrwxrwx
+1: d -> directory, - -> file
+2-4: rwx -> owner permissions
+5-7: rwx -> group permissions
+8-10: rwx -> all user permissions
+```
+
+
+### Create shared folder for group:
 ```bash
 mdkir [DIRECTORY]
 
