@@ -70,7 +70,6 @@ sudo usermod -aG [GROUP](,[GROUP]) [USER]
 
 # remove user from group
 sudo gpasswd -d [USER] [GROUP]
-
 ```
 
 
