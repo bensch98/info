@@ -5,9 +5,9 @@
 - */scripts:* for command-line interface stuff
 - */test:* for unit tests
 - */docs:* documentation
-- */apidocs:* epydoc generated API docs
+- */apidocs:* epydoc generated API docs or other automatically generated docs
 - */projectname:* whole python package
-- *setup.py:* 
+- *setup.py* 
 
 
 **Example tree structure:**
