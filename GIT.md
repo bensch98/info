@@ -1,4 +1,4 @@
-# Helpful git commands
+# Git Commands
 
 Init new git repo and rename `master` branch in `main`:
 

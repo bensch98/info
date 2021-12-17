@@ -1,4 +1,4 @@
-## Helpful shell commands
+# Shell Commands
 
 Copy all files from one directory to another excluding specified files/folders.
 ```bash
