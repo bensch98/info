@@ -9,6 +9,30 @@ git pull git@github.com:<username>/<repo-name>.git
 git branch -m master main
 ```
 
+Create a new branch:
+```bash
+git checkout -b feature/branch-name
+# git add . && git commit -m 'commits'
+git push -u origin feature/branch-name
+```
+
+After pushing the local branch to the remote repo, a Pull Request can be created.
+When the PR is accepted the branch can be deleted in the web UI or via the CLI like this:
+```bash
+git push origin --delete feature/branch-name
+# or
+git push origin :feature/branch-name
+```
+
+In case no PR is needed, the changes of one branch can also simply merged into another branch:
+```bash
+git checkout main
+git merge feature/branch-name
+git branch -d feature/branch-name
+```
+
+The `git merge` command merges the changes of the specified branch into the currently active one.
+
 Pull Request:
 1. Fork Repo
 2. `git clone` original repo
