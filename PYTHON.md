@@ -1,6 +1,6 @@
 # Python
 
-**Example Python directory structure:**
+### Example Python directory structure
 - *README.md*
 - */scripts:* for command-line interface stuff
 - */test:* for unit tests
@@ -10,7 +10,7 @@
 - *setup.py* 
 
 
-**Example tree structure:**
+### Example tree structure
 ```text
 .
 ├── data
@@ -37,16 +37,25 @@
         └── script3.py
 ```
 
+### Setup.py
+
 *example setup.py*
 ```python
 #!/usr/bin/env python3
 
 import os
 from setuptools import setup
+import pathlib
+from projectname import __version__ 
 
-directory = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(directory, 'README.md'), encoding='utf-8') as f:
+readme = pathlib.Path(__file__).parent / 'README.md'
+requirements = pathlib.Path(__file__).parent / 'requirements.txt'
+
+with open(readme, 'r') as f:
   long_description = f.read()
+
+with open(requirements, 'r') as f:
+  install_requirements = f.read().splitlines()
 
 setup(name='projectname',
       version='0.8.15',
@@ -60,13 +69,25 @@ setup(name='projectname',
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License"
       ],
-      install_requires=['numpy', 'requests', 'pandas'],
+      install_requires=install_requirements,
       python_requires='>=3.8',
       include_package_data=True)
 ```
 
+### Source and Build distribution
 
-> To use the python package the path to the repo must be specified in the PYTHONPATH. 
+```bash
+rm -rf dist build *.egg-info && \
+  python setup.py sdist bdist_wheel && \
+  echo -e "\n--- Wheel ---" && \
+  unzip -l dist/*.whl && \
+  echo -e "\n--- Source Distribution ---" && \
+  tar --list -f dist/*.tar.gz
+```
+
+### Use package
+
+> To use the python package the path to the repo must be specified in the PYTHONPATH or the package installed via `pip install -e .` to omit exporting the PATH. 
 
 *via bash*
 ```bash
