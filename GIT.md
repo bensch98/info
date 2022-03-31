@@ -22,6 +22,9 @@ When the PR is accepted the branch can be deleted in the web UI or via the CLI l
 git push origin --delete feature/branch-name
 # or
 git push origin :feature/branch-name
+
+# delete local branch
+git branch -d feature/branch-name
 ```
 
 In case no PR is needed, the changes of one branch can also simply merged into another branch:
