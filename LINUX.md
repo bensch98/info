@@ -1,6 +1,9 @@
 # Linux
 
-### User management:
+## Rights
+
+### User management
+
 ```bash
 # add new user
 sudo useradd [USER]
@@ -51,7 +54,8 @@ root	ALL=(ALL:ALL) ALL
 ```
 
 
-### Group management:
+### Group management
+
 ```bash
 # add group
 groupadd [GROUP]
@@ -73,7 +77,8 @@ sudo gpasswd -d [USER] [GROUP]
 ```
 
 
-### File permissions:
+### File permissions
+
 ```text
 4 -> r
 2 -> w
@@ -102,4 +107,30 @@ chmod 770 [DIRECTORY]
 
 # inherit file permissions to all subdirectories
 sudo chmod +s [DIRECTORY]
+```
+
+## Disk Formatting
+
+### Format Bootable to USB
+
+```bash
+sudo fdisk -l
+sudo wipefs --all /dev/sdx # replace x with name of disk
+sudo fdisk -l # check
+sudo cfdisk /dev/sdx # create new partition
+```
+Steps:
+1. select dos for drives below 2TB
+2. Enter to create new partition
+3. leave partition size at default which is the maximum possible
+4. select primary
+5. select and enter "Write"
+6. confirm with yes
+7. quit program
+
+
+### Formt USB Drive with FAT
+```bash
+# replace x with name of disk
+sudo mkfs.vfat -n 'LABEL' /dev/sdx1
 ```
