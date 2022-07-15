@@ -115,7 +115,7 @@ sudo chmod +s [DIRECTORY]
 
 ```bash
 sudo fdisk -l
-sudo wipefs --all /dev/sdx # replace x with name of disk
+sudo wipefs -f --all /dev/sdx # replace x with name of disk
 sudo fdisk -l # check
 sudo cfdisk /dev/sdx # create new partition
 ```
