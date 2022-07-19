@@ -134,3 +134,42 @@ Steps:
 # replace x with name of disk
 sudo mkfs.vfat -n 'LABEL' /dev/sdx1
 ```
+
+## Hardware Settings
+
+### Disabling Periphals
+
+```bash
+$ xinput list
+⎡ Virtual core pointer                          id=2    [master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
+⎜   ↳ MSFT0001:00 06CB:7F28 Mouse               id=16   [slave  pointer  (2)]
+⎜   ↳ MSFT0001:00 06CB:7F28 Touchpad            id=17   [slave  pointer  (2)]
+⎜   ↳ ITE Tech. Inc. ITE Device(8910) Keyboard  id=13   [slave  pointer  (2)]
+⎜   ↳ Logitech MX Master 3                      id=10   [slave  pointer  (2)]
+⎣ Virtual core keyboard                         id=3    [master keyboard (2)]
+    ↳ Virtual core XTEST keyboard               id=5    [slave  keyboard (3)]
+    ↳ Power Button                              id=9    [slave  keyboard (3)]
+    ↳ Jabra Link 370                            id=12   [slave  keyboard (3)]
+    ↳ AT Translated Set 2 keyboard              id=18   [slave  keyboard (3)]
+    ↳ Video Bus                                 id=7    [slave  keyboard (3)]
+    ↳ ITE Tech. Inc. ITE Device(8910) Keyboard  id=20   [slave  keyboard (3)]
+    ↳ ITE Tech. Inc. ITE Device(8910) Wireless Radio Control    id=14   [slave  keyboard (3)]
+    ↳ Power Button                              id=6    [slave  keyboard (3)]
+    ↳ Integrated Camera: Integrated C           id=11   [slave  keyboard (3)]
+    ↳ Logitech MX Master 3                      id=19   [slave  keyboard (3)]
+    ↳ Video Bus                                 id=8    [slave  keyboard (3)]
+    ↳ HD 4.50R (AVRCP)                          id=21   [slave  keyboard (3)]
+    ↳ Ideapad extra buttons                     id=15   [slave  keyboard (3)]
+```
+
+Search for desired id and disable or enable it via following command:
+
+```bash
+# enable
+xinput set-prop 17 "Device Enabled" 1
+# disable
+xinput set-prop 17 "Device Enabled" 0
+```
+
+In this case the integrated Laptop touchpad was enabled and then disabled.
