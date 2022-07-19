@@ -137,7 +137,7 @@ sudo mkfs.vfat -n 'LABEL' /dev/sdx1
 
 ## Hardware Settings
 
-### Disabling Periphals
+### Disabling Peripherals
 
 ```bash
 $ xinput list
