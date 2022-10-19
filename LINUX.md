@@ -173,3 +173,42 @@ xinput set-prop 17 "Device Enabled" 0
 ```
 
 In this case the integrated Laptop touchpad was enabled and then disabled.
+
+
+## Networking
+
+### Ports
+
+Check if port is in use. No output means, that it's not in use yet.
+```bash
+netstat -na | grep :4000
+ss -na | grep :4000
+```
+
+Open port via ufw (iptables is old).
+```bash
+sudo ufw allow 4000
+```
+
+Test newly opened port via 2 terminals:
+*1st terminal (e.g. 192.168.0.2)*
+```bash
+sudo ls | nc -l -p 4000
+```
+
+*2nd terminal (192.168.209.3)*
+```bash
+telnet 192.168.0.2 4000
+Trying 192.168.0.2...
+Connected to 192.168.0.2.
+
+...
+```
+
+List open ports:
+```bash
+# show also locally open ports
+netstat -antplF
+# or show only open ports to outside
+nmap -open 192.168.0.2
+```
