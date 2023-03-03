@@ -174,6 +174,19 @@ xinput set-prop 17 "Device Enabled" 0
 
 In this case the integrated Laptop touchpad was enabled and then disabled.
 
+## Screen Resolution
+
+Really old monitors might not work out of the box on Linux attached to newer hardware. This can easily be fixed by setting the screen resolution directly in GRUB:
+
+```bash
+sudo vi /etc/default/grub
+# find the line:
+# # GRUB_GFXMODE=640x480
+# and change it to e.g.:
+# GRUB_GFXMODE=1920x1200
+sudo update-grub
+reboot
+```
 
 ## Networking
 
