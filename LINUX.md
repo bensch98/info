@@ -225,3 +225,41 @@ netstat -antplF
 # or show only open ports to outside
 nmap -open 192.168.0.2
 ```
+
+### IPv6
+
+Identify network interface name to configure for IPv6 via `ip a`.
+Then edit following file or create if not already present:
+*/etc/netplan/00-installer-config.yaml*
+```yaml
+network:
+  version: 2
+  ethernets:
+    <interface_name>:
+      dhcp4: <yes/no>
+      dhcp6: <yes/no>
+      addresses:
+      - <IPv6_address>/<prefix_length>
+      gateway6: <IPv6_gateway>
+      nameservers:
+        addresses:
+        - <DNS_server_IPv6_address>
+        - <DNS_server_IPv6_address>
+```
+
+The variables can be set as follows:
+- *interface name*: Find out interface name via `ip a` 
+- *IPv6 address*: Static IPv6 address that should be assigned
+- *prefix length*: Probably /64
+- *IPv6 gateway*: `ip -6 route` -> `default via <IPv6_gateway> dev <interface_name>`
+- *DNS server IPv6 address*: DNS Server config with
+
+Apply the above configuration via:
+```bash
+sudo netplan apply
+```
+
+Verify that the IPv6 address was configured correctly via `ip a` and ping a well-known IPv6 address like Google's DNS server (2001:4860:4860::8888). 
+```bash
+ping6 2001:4860:4860::8888
+```
