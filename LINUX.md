@@ -109,6 +109,26 @@ chmod 770 [DIRECTORY]
 sudo chmod +s [DIRECTORY]
 ```
 
+## Package Management
+
+### Multiple different versions
+
+To manage multiple different versions of a package installed via `apt` the actively used version can be chosen via `update-alternatives`. This is an example to manage version 7, 8 and 9 for both gcc and g++.
+
+```bash
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get -y install gcc-7 g++-7 gcc-8 g++-8 gcc-9 g++-9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 7
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 7
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 8
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 8
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9
+sudo update-alternatives --config gcc
+```
+
+
 ## Disk Formatting
 
 ### Format Bootable to USB
