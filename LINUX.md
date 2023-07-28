@@ -16,7 +16,6 @@ sudo usermod -aG sudo [USER]
 sudo visudo /etc/sudoers # add user
 ```
 
-
 *sudoers*
 ```text
 #
@@ -53,7 +52,6 @@ root	ALL=(ALL:ALL) ALL
 #includedir /etc/sudoers.d
 ```
 
-
 ### Group management
 
 ```bash
@@ -76,7 +74,6 @@ sudo usermod -aG [GROUP](,[GROUP]) [USER]
 sudo gpasswd -d [USER] [GROUP]
 ```
 
-
 ### File permissions
 
 ```text
@@ -93,7 +90,6 @@ Add up for combined permissions
 5-7: rwx -> group permissions
 8-10: rwx -> all user permissions
 ```
-
 
 ### Create shared folder for group:
 ```bash
@@ -128,7 +124,6 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9
 sudo update-alternatives --config gcc
 ```
 
-
 ## Disk Formatting
 
 ### Format Bootable to USB
@@ -148,11 +143,31 @@ Steps:
 6. confirm with yes
 7. quit program
 
-
 ### Formt USB Drive with FAT
 ```bash
 # replace x with name of disk
 sudo mkfs.vfat -n 'LABEL' /dev/sdx1
+```
+
+## Remote Access
+
+### X-Forwarding
+
+To forward the display via X following option must be inserted or uncommented in `/etc/ssh/sshd_config`:
+```txt
+X11Forwarding yes
+```
+
+After that the ssh service must be restarted via:
+```bash
+sudo systemctl restart ssh
+```
+
+Now it should be able to forward the remote display when specifying the `-X` or `-Y` flag in the ssh command.
+```bash
+ssh -X user@ip
+# if you trust the remote PC and want a little better performance use -Y
+ssh -Y user@ip
 ```
 
 ## Hardware Settings
