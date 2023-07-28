@@ -19,3 +19,31 @@ Restart sound driver:
 ```bash
 pulseaudio -k && sudo alsa force-reload
 ```
+
+Cut .mp3 files:
+```bash
+# sudo apt-get install ffmpeg
+
+# start time to end time:
+ffmpeg -i input.mp3 -vn -acodec copy -ss 00:00:00 -to 00:00:30 output.mp3
+
+# start time + duration time:
+ffmpeg -i input.mp3 -vn -acodec copy -ss 00:00:00 -t 00:00:30 output.mp3
+
+# start of record till end time:
+ffmpeg -i input.mp3 -vn -acodec copy -to 00:00:30 output.mp3
+
+# start time till end of record:
+ffmpeg -i input.mp3 -vn -acodec copy -ss 00:00:30 output.mp3
+```
+
+Record .mp3 files:
+```bash
+# sudo apt-get install sox libsox-fmt-all
+rec input.mp3
+```
+
+Play .mp3 files:
+```bash
+play intput.mp3
+```
