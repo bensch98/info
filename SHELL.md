@@ -50,6 +50,8 @@ play intput.mp3
 
 Adjust volume of .mp3 files:
 ```bash
-# sudo apt-get install lame
+# sudo apt-get install lame sox
 lame --scale 20 input.mp3 output.mp3
+# or
+sox input.mp3 normalized.mp3 gain -n -3
 ```
