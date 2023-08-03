@@ -47,3 +47,9 @@ Play .mp3 files:
 ```bash
 play intput.mp3
 ```
+
+Adjust volume of .mp3 files:
+```bash
+# sudo apt-get install lame
+lame --scale 20 input.mp3 output.mp3
+```
