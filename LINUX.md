@@ -298,3 +298,18 @@ Verify that the IPv6 address was configured correctly via `ip a` and ping a well
 ```bash
 ping6 2001:4860:4860::8888
 ```
+
+## Monitoring
+
+### GPU
+
+```bash
+nvidia-smi
+```
+
+### CPU
+
+```bash
+sudoa apt-get install lm-sensors
+sensors
+```
