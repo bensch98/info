@@ -143,10 +143,29 @@ Steps:
 6. confirm with yes
 7. quit program
 
-### Formt USB Drive with FAT
+### Format USB Drive with FAT
+
 ```bash
 # replace x with name of disk
 sudo mkfs.vfat -n 'LABEL' /dev/sdx1
+```
+
+### Format Device via CLI
+
+```bash
+lsblk
+sudo umount /dev/sdX1
+sudo fdsik /dev/sdX
+# p -> list partitions
+# d -> delete partitions
+# n -> create partitions
+# w -> write changes
+# write change
+
+sudo mkfs.ext4 /dev/sdX1
+# or
+sudo mkfs.vfat -F 32 /dev/sdX1
+sudo eject /dev/sdX
 ```
 
 ## Remote Access
