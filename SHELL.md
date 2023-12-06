@@ -15,6 +15,11 @@ Delete all directories from pwd except specified one:
 find . ! -name '.git' -type d -exec rm -rf {} +
 ```
 
+Delete all stuff (files/directories) from pwd except specified one:
+```bash
+find . ! -name "*.md" -print0 | xargs -0 rm -rf
+```
+
 Restart sound driver:
 ```bash
 pulseaudio -k && sudo alsa force-reload
