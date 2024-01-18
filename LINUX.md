@@ -168,6 +168,25 @@ sudo mkfs.vfat -F 32 /dev/sdX1
 sudo eject /dev/sdX
 ```
 
+### Create Bootable USB
+
+```bash
+# find out which device the USB stick is -> sdX
+lsblk
+sudo umount /dev/sdX1
+
+# in case distros are on an external device, mount it first
+mkdir -p /mnt/myusb
+sudo mount /dev/sdY1 /mnt/myusb/
+
+# write ISO to USB stick
+sudo dd if=/path/to/distros/ubuntu.iso of=/dev/sdX bs=4M status=progress
+
+# eject USB
+sync
+sudo eject /dev/sdX
+```
+
 ## Remote Access
 
 ### X-Forwarding
