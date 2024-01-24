@@ -47,6 +47,11 @@ Convert .mp4 to .mp3 file:
 ffmpeg -i input.mp4 -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 output.mp3
 ```
 
+Overlay two .mp3 files:
+```
+ffmpeg -i input0.mp3 -i input1.mp3 -filter_complex amix=inputs=2:duration=longest output.mp3
+```
+
 Record .mp3 files:
 ```bash
 # sudo apt-get install sox libsox-fmt-all
