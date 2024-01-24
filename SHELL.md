@@ -42,6 +42,11 @@ ffmpeg -i input.mp3 -vn -acodec copy -to 00:00:30 output.mp3
 ffmpeg -i input.mp3 -vn -acodec copy -ss 00:00:30 output.mp3
 ```
 
+Convert .mp4 to .mp3 file:
+```bash
+ffmpeg -i input.mp4 -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 output.mp3
+```
+
 Record .mp3 files:
 ```bash
 # sudo apt-get install sox libsox-fmt-all
@@ -50,7 +55,7 @@ rec input.mp3
 
 Play .mp3 files:
 ```bash
-play intput.mp3
+play input.mp3
 ```
 
 Adjust volume of .mp3 files:
