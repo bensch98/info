@@ -42,6 +42,11 @@ ffmpeg -i input.mp3 -vn -acodec copy -to 00:00:30 output.mp3
 ffmpeg -i input.mp3 -vn -acodec copy -ss 00:00:30 output.mp3
 ```
 
+Cut .mp4 files:
+```bash
+ffmpeg -i input.mp4 -ss 00:00:00 -to 00:00:30 -c:v copy -c:a copy output.mp4
+```
+
 Convert .mp4 to .mp3 file:
 ```bash
 ffmpeg -i input.mp4 -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 output.mp3
