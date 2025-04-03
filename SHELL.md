@@ -25,6 +25,8 @@ Restart sound driver:
 pulseaudio -k && sudo alsa force-reload
 ```
 
+## ffmpeg
+
 Cut .mp3 files:
 ```bash
 # sudo apt-get install ffmpeg
@@ -75,3 +77,13 @@ lame --scale 20 input.mp3 output.mp3
 # or
 sox input.mp3 normalized.mp3 gain -n -3
 ```
+
+Cropping .mp4 files:
+```bash
+# get resolution
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 advanced-cropped.mp4
+
+# crop video (60px at top and 60px at bottom) -> results here in 1920x1080
+ffmpeg -i input.mp4 -vf "crop=1920:1080:0:60" -c:a copy output.mp4
+```
+
