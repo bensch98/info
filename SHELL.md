@@ -87,3 +87,8 @@ ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p
 ffmpeg -i input.mp4 -vf "crop=1920:1080:0:60" -c:a copy output.mp4
 ```
 
+Download .m3u8 file:
+```bash
+ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i "https://example.com/playlist.m3u8" -c copy output.mp4
+```
+
